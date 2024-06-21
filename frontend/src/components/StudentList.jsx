@@ -8,13 +8,11 @@ const StudentList = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get('https:localhost:5000/api/users/students');
+        const response = await axios.get('http://localhost:3001/api/users/students');
         console.log("Fetching the data of students..........");
         
-        //Sort students by score in descending order
-       const sortedStudents = response.data.sort((a, b) => b.Score - a.Score);
+        const sortedStudents = response.data.sort((a, b) => b.Score - a.Score);
         setStudents(sortedStudents);
-        //setStudents(response.data);
       } catch (error) {
         console.error('There was an error fetching the students data!', error);
       }
@@ -33,8 +31,6 @@ const StudentList = () => {
             <th>Name</th>
             <th>USN</th>
             <th>Marks</th>
-            <th>Branch</th>
-            <th>Year</th>
           </tr>
         </thead>
         <tbody>
@@ -44,8 +40,6 @@ const StudentList = () => {
               <td>{student.name}</td>
               <td>{student.usn}</td>
               <td>{student.Score}</td>
-              <td>{student.branch}</td>
-              <td>{student.year}</td>
             </tr>
           ))}
         </tbody>

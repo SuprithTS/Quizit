@@ -37,20 +37,13 @@ router.post('/submit', async (req, res) => {
 
 router.get('/students', async (req, res) => {
   try {
-    // Use aggregation to join User and Usermarks collections based on usn
-    const students = await Students.find();
-    const studentMarks = await Studentmarks.find();
-
-    // Send both collections' data in the response as separate properties
-    res.json({
-      students: students,
-      studentMarks: studentMarks
-    });
-  } 
-  
-  catch (error) {
+    const studentMarks = await Studentmarks.find().sort({ Score: -1 });
+    res.json(studentMarks);
+  } catch (error) {
     res.status(500).json({ error: error.message });
   }
-});
+}); 
+  
+
 
 module.exports = router;

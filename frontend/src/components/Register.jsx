@@ -74,13 +74,11 @@ const Register = () => {
           placeholder="USN"
           required
         />
-        <input
-          type="text"
-          value={phone}
-          onChange={(e) => setPhone(e.target.value)}
-          placeholder="Phone Number"
-          required
-        />
+        <input type="tel" 
+        pattern="[0-9]{10}" 
+        onChange={(e) => setPhone(e.target.value)}
+        placeholder="Enter phone-no(10-digit)"
+        required/>
         <input
           type="email"
           value={email}
@@ -110,7 +108,7 @@ const Register = () => {
           <option value="IEM">IEM</option>
         </select>
         <input
-          type="text"
+          type="number"
           value={cgpa}
           onChange={(e) => setCgpa(e.target.value)}
           placeholder="CGPA"
